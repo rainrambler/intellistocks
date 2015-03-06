@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace FinanceAnalyzer.Utility
+{
+    class DateDeltaConvertor
+    {
+        public void Init(ICollection<DateTime> allDates)
+        {
+            idToDate_.Clear();
+            dateToId_.Clear();
+
+            DateTime minDate = allDates.Min();
+
+            foreach (DateTime dt in allDates)
+            {
+                int delta = (dt - minDate).Days;
+                idToDate_.Add(delta, dt);
+                dateToId_.Add(dt, delta);
+            }
+        }
+
+        public int GetDateID(DateTime dt)
+        {
+            if (!dateToId_.ContainsKey(dt))
+            {
+                return INVALID_DATE_ID;
+            }
+
+            return dateToId_[dt];
+        }
+
+        public DateTime GetIDDate(int val)
+        {
+            if (!idToDate_.ContainsKey(val))
+            {
+                return DateTime.MinValue;
+            }
+
+            return idToDate_[val];
+        }
+
+        public const int INVALID_DATE_ID = -1;
+
+        Dictionary<int, DateTime> idToDate_ = new Dictionary<int, DateTime>();
+        Dictionary<DateTime, int> dateToId_ = new Dictionary<DateTime, int>();
+    }
+}

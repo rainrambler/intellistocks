@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3BE55C7C-6C37-4A3C-8220-FB95AB02A7FE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FinanceAnalyzer</RootNamespace>
+    <AssemblyName>StockAnalyzer</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <ApplicationIcon>01.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>Xinway.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NCalc">
+      <HintPath>External\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB\IStockDBReader.cs" />
+    <Compile Include="DB\StockIDSynchronization.cs" />
+    <Compile Include="DB\StockMongoDBReader.cs" />
+    <Compile Include="Display\VertexPoint.cs" />
+    <Compile Include="Statistics\Shape\IStockShape.cs" />
+    <Compile Include="Statistics\Vertex\SortStock.cs" />
+    <Compile Include="Statistics\Vertex\StockVertex.cs" />
+    <Compile Include="Statistics\Vertex\Vertexes.cs" />
+    <Compile Include="Statistics\Vertex\VertexFinder.cs" />
+    <Compile Include="Statistics\Vertex\VertexJudger.cs" />
+    <Compile Include="Statistics\Weekly\StockWeekData.cs" />
+    <Compile Include="Statistics\Weekly\WeeklyResult.cs" />
+    <Compile Include="Statistics\Weekly\WeeklyResults.cs" />
+    <Compile Include="Statistics\Weekly\WeeklyStatistics.cs" />
+    <Compile Include="Stock\Account.cs" />
+    <Compile Include="Business\BonusInfo.cs" />
+    <Compile Include="Business\BonusProcessor.cs" />
+    <Compile Include="Business\IBonusProcessor.cs" />
+    <Compile Include="Business\Shape\TripleShapeScanner.cs" />
+    <Compile Include="Business\VolumeHelper.cs" />
+    <Compile Include="DB\BonusReader.cs" />
+    <Compile Include="DB\IDataChecker.cs" />
+    <Compile Include="DB\StockJudger.cs" />
+    <Compile Include="Display\StockPoint.cs" />
+    <Compile Include="Stock\CharMapping\RatioHalfCharMapping.cs" />
+    <Compile Include="Stock\CharMapping\RatioPercentCharMapping.cs" />
+    <Compile Include="Stock\CharMapping\RatioQuarterCharMapping.cs" />
+    <Compile Include="Stock\CharMapping\RatioTenthCharMapping.cs" />
+    <Compile Include="Stock\CharMapping\StockRatio.cs" />
+    <Compile Include="Stock\HolderManager.cs" />
+    <Compile Include="Stock\IStockHistory.cs" />
+    <Compile Include="Judger\IStrategyJudger.cs" />
+    <Compile Include="Judger\IStrategyScores.cs" />
+    <Compile Include="Judger\StrategyJudger.cs" />
+    <Compile Include="Judger\StrategyScores.cs" />
+    <Compile Include="Judger\Validation\SignalValidationCalc.cs" />
+    <Compile Include="Judger\Validation\ValidationJudger.cs" />
+    <Compile Include="Stock\ScoresCalculator.cs" />
+    <Compile Include="Stock\StockCharMappingAnalyzer.cs" />
+    <Compile Include="Stock\CharMapping\StockHistoryCharMapping.cs" />
+    <Compile Include="Stock\StocksHistory.cs" />
+    <Compile Include="Strategy\Factory\KdAdjustFactory.cs" />
+    <Compile Include="Strategy\Factory\RiseDownAdjustFactory.cs" />
+    <Compile Include="Strategy\Factory\SpikeAdjustFactory.cs" />
+    <Compile Include="Strategy\Factory\VolumeAdjustFactory.cs" />
+    <Compile Include="Strategy\Impl\StrategyTwoDayPlusOne.cs" />
+    <Compile Include="Strategy\Indicator\BasicSignalCalc.cs" />
+    <Compile Include="Strategy\Indicator\IIndicatorCalc.cs" />
+    <Compile Include="Strategy\Indicator\ISignalCalculator.cs" />
+    <Compile Include="Strategy\Indicator\Signal\ChaikinOscillator.cs" />
+    <Compile Include="Strategy\Indicator\Signal\EngulfingSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\KDSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\MACDAlgorithm.cs" />
+    <Compile Include="Strategy\Indicator\Signal\MACDSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\MACompareSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\MixMultiSignals.cs" />
+    <Compile Include="Strategy\Indicator\Signal\MoneyFlowIndexSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\MovingAverageSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\PriceUpDown.cs" />
+    <Compile Include="Strategy\Indicator\Signal\RiseDownSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\RSISignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\SimpleShapeSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\SpikeShapeSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\SpikeVolumeShapeSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\ThreeDaySignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\TripleShapeSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\VolumeSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\HoldSignal.cs" />
+    <Compile Include="Strategy\Indicator\Signal\WaysShapeSignal.cs" />
+    <Compile Include="Strategy\Factory\IStrategyFactory.cs" />
+    <Compile Include="Strategy\Result\IStrategyResults.cs" />
+    <Compile Include="Strategy\Judger\IStockJudger.cs" />
+    <Compile Include="Strategy\Judger\RiseJudgerOptim.cs" />
+    <Compile Include="Strategy\Judger\UpJudgerOptim.cs" />
+    <Compile Include="Strategy\Impl\StrategyBamboo.cs" />
+    <Compile Include="Strategy\Factory\StrategyFactory.cs" />
+    <Compile Include="Strategy\Impl\StrategyIndicator.cs" />
+    <Compile Include="Strategy\Impl\StrategyVolumeOptim.cs" />
+    <Compile Include="Strategy\StrategyFactoryCreater.cs" />
+    <Compile Include="Strategy\TradeRule\RiseDownRule.cs" />
+    <Compile Include="UI\FormBonus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormBonus.Designer.cs">
+      <DependentUpon>FormBonus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormBonusAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormBonusAdd.Designer.cs">
+      <DependentUpon>FormBonusAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormMSChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormMSChart.Designer.cs">
+      <DependentUpon>FormMSChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormResultChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormResultChart.Designer.cs">
+      <DependentUpon>FormResultChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormScores.Designer.cs">
+      <DependentUpon>FormScores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormShapeStatistic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormShapeStatistic.Designer.cs">
+      <DependentUpon>FormShapeStatistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormStrategy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormStrategy.Designer.cs">
+      <DependentUpon>FormStrategy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormStrategyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormStrategyDetail.Designer.cs">
+      <DependentUpon>FormStrategyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ApplicationHelper.cs" />
+    <Compile Include="Utility\DateFunc.cs" />
+    <Compile Include="Stock\FinanceRunner.cs" />
+    <Compile Include="Log\DummyLog.cs" />
+    <Compile Include="Log\ILog.cs" />
+    <Compile Include="Log\UITraceLog.cs" />
+    <Compile Include="Strategy\Judger\RiseJudger.cs" />
+    <Compile Include="Strategy\Judger\UpJudger.cs" />
+    <Compile Include="Strategy\Impl\StrategyBear.cs" />
+    <Compile Include="UI\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Display\IStockDrawer.cs" />
+    <Compile Include="Stock\IStockHolder.cs" />
+    <Compile Include="Stock\IStockValues.cs" />
+    <Compile Include="Log\LogMgr.cs" />
+    <Compile Include="Strategy\Result\StrategyResults.cs" />
+    <Compile Include="Strategy\IFinanceStrategy.cs" />
+    <Compile Include="Strategy\Impl\StrategyMinMax.cs" />
+    <Compile Include="Strategy\Impl\StrategyPercent.cs" />
+    <Compile Include="Stock\MarketStock.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\FormBonus.resx">
+      <DependentUpon>FormBonus.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormBonusAdd.resx">
+      <DependentUpon>FormBonusAdd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMSChart.resx">
+      <DependentUpon>FormMSChart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormResultChart.resx">
+      <DependentUpon>FormResultChart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormScores.resx">
+      <DependentUpon>FormScores.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormShapeStatistic.resx">
+      <DependentUpon>FormShapeStatistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormStrategy.resx">
+      <DependentUpon>FormStrategy.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormStrategyDetail.resx">
+      <DependentUpon>FormStrategyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Stock\StockHistory.cs" />
+    <Compile Include="Stock\StockHolder.cs" />
+    <Compile Include="Stock\StockOper.cs" />
+    <Compile Include="Display\StockPropDrawer.cs" />
+    <Compile Include="Stock\StockValues.cs" />
+    <Compile Include="Stock\Transaction.cs" />
+    <Compile Include="Log\UIFileLog.cs" />
+    <Compile Include="Log\UILabelLog.cs" />
+    <Compile Include="Business\Shape\IShapeScanner.cs" />
+    <Compile Include="Business\Shape\ITripleShapeScanner.cs" />
+    <Compile Include="Business\Shape\ShapeJudger.cs" />
+    <Compile Include="Utility\DateIDConvertor.cs" />
+    <Compile Include="Utility\Stock\EMACalculator.cs" />
+    <Compile Include="Utility\FixedContainer.cs" />
+    <Compile Include="Utility\FixedSizeContainer.cs" />
+    <Compile Include="Utility\FixedSizeLinkedList.cs" />
+    <Compile Include="Utility\Holidays.cs" />
+    <Compile Include="Business\Shape\ShapeScanner.cs" />
+    <Compile Include="Utility\MaxCommonString.cs" />
+    <Compile Include="Utility\Stock\MovingAveragePrediction.cs" />
+    <Compile Include="Utility\NumbericHelper.cs" />
+    <Compile Include="Utility\Stock\SlopeCalculator.cs" />
+    <Compile Include="Utility\Stock\StockDataCalc.cs" />
+    <Compile Include="Utility\Stock\TwoDaySlope.cs" />
+    <Compile Include="Utility\ValueAverager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stock.Common\Stock.Common.csproj">
+      <Project>{E095DC1D-422E-461B-BFE8-867B740C6690}</Project>
+      <Name>Stock.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Stock.Db\Stock.Db.csproj">
+      <Project>{6E9CC238-A81E-4CF6-A1AD-64EA9EEB59B5}</Project>
+      <Name>Stock.Db</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
