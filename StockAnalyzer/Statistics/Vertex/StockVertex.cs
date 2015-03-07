@@ -17,6 +17,9 @@ namespace FinanceAnalyzer.Statistics.Vertex
         Automatic
     };
 
+    /// <summary>
+    /// The max or min vertex of the shape
+    /// </summary>
     public class StockVertex
     {
         public VertexType VertType

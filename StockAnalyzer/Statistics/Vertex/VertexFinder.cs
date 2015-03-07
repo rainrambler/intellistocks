@@ -13,7 +13,6 @@ namespace FinanceAnalyzer.Statistics.Vertex
     {
         public ICollection<StockVertex> FindVertex(IStockHistory hist)
         {
-            //Dictionary<int, StockVertex> datePosToVertex = new Dictionary<int, StockVertex>();
             Vertexes vertexes = new Vertexes();
 
             int currentDate = hist.MinDateId;

@@ -28,7 +28,8 @@ namespace FinanceAnalyzer.Strategy.Factory
             AddStrategyBySignal(new SimpleShapeSignal());
             AddStrategyBySignal(new TripleShapeSignal(new TripleShapeScanner()));
 
-            AddStrategyBySignal(new WaysShapeSignal(new ShapeScanner()));
+            AddStrategyBySignal(new WaysShapeSignal(new WayShapeScanner()));
+            AddStrategyBySignal(new WaysShapeSignal(new WayShapeScanner(0.016)));
 
             AddStrategyBySignal(new MACompareSignal());
 
@@ -39,8 +40,10 @@ namespace FinanceAnalyzer.Strategy.Factory
             AddMixedSignals(new ThreeDaySignal(new UpJudger()),
                 new MoneyFlowIndexSignal());
             AddMixedSignals(new SimpleShapeSignal(), new MACDSignal());
+            AddTwoSignals(new ThreeDaySignal(new UpJudger()), new MACDSignal());
 
-            AddStrategy(new StrategyTwoDayPlusOne());
+            //AddStrategy(new StrategyTwoDayPlusOne());
+            AddStrategy(new StrategyRedCross());
             AddStrategy(new StrategyMinMax());
             AddStrategy(new StrategyBamboo());
             AddStrategy(new StrategyVolumeOptim(0.4, 0.3));
@@ -68,6 +71,15 @@ namespace FinanceAnalyzer.Strategy.Factory
             MixMultiSignals signals = new MixMultiSignals();
             signals.AddIndicator(calc1, IndicatorMixedType.BuyAndSell);
             signals.AddIndicator(calc2, IndicatorMixedType.BuyAndSell);
+
+            AddStrategyBySignal(signals);
+        }
+
+        private void AddTwoSignals(ISignalCalculator calcBuy, ISignalCalculator calcSell)
+        {
+            MixMultiSignals signals = new MixMultiSignals();
+            signals.AddIndicator(calcBuy, IndicatorMixedType.Buy);
+            signals.AddIndicator(calcSell, IndicatorMixedType.Sell);
 
             AddStrategyBySignal(signals);
         }

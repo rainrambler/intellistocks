@@ -65,6 +65,11 @@ namespace Stock.Common.Data
             set { MinPrice_ = value; }
         }
 
+        public double AvgPrice
+        {
+            get { return (MaxPrice + MinPrice + StartPrice + EndPrice) / 4.0; }
+        }
+
         // 成交手数
         public int VolumeHand
         {

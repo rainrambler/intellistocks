@@ -31,26 +31,38 @@ namespace FinanceAnalyzer.Strategy.Indicator.Signal
 
         public OperType GetSignal()
         {
+            OperType totalSignal = OperType.NoOper;
+
             foreach (ISignalCalculator calc in IndicatorsArr_)
             {
                 OperType ot = calc.GetSignal();
 
-                // TODO: only the first operation signal is considered 
                 if ((ot == OperType.Buy) && IsBuyValid(calc.GetName()))
                 {
-                    return OperType.Buy;
+                    if (totalSignal != OperType.Sell)
+                    {
+                        totalSignal = OperType.Buy;
+                    }
+                    else
+                    {
+                        totalSignal = OperType.NoOper; // reverse signals occur
+                    }
                 }
-                else if ((ot == OperType.Sell) && IsSellValid(calc.GetName()))
+                
+                if ((ot == OperType.Sell) && IsSellValid(calc.GetName()))
                 {
-                    return OperType.Sell;
-                }
-                else
-                {
-                    return OperType.NoOper;
-                }
+                    if (totalSignal != OperType.Buy)
+                    {
+                        totalSignal = OperType.Sell;
+                    }
+                    else
+                    {
+                        totalSignal = OperType.NoOper; // reverse signals occur
+                    }
+                }                
             }
 
-            return OperType.NoOper;
+            return totalSignal;
         }
 
         public string GetName()

@@ -5,6 +5,8 @@ namespace FinanceAnalyzer.Business.Shape
 {
     interface IShapeScanner
     {
-        OperType Analyse(IStockData stock, IStockData prevStock);        
+        OperType Analyse(IStockData stock, IStockData prevStock);
+
+        string GetName();
     }
 }

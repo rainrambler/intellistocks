@@ -13,6 +13,11 @@ namespace FinanceAnalyzer.Utility.Stock
         {
         }
 
+        /// <summary>
+        /// End price compare to start
+        /// </summary>
+        /// <param name="stock">Stock data of one day</param>
+        /// <returns>percent. maybe negtive</returns>
         public static double GetRisePercent(IStockData stock)
         {
             return GetRisePercent(stock.StartPrice, stock.EndPrice);

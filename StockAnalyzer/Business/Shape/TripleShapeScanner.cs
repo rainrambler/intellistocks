@@ -20,7 +20,6 @@ namespace FinanceAnalyzer.Business.Shape
             }
 
             double deltapercent = StockDataCalc.GetRisePercent(stock);
-            //double prevPercent = StockDataCalc.GetRisePercent(prevStock);
             double nextPercent = StockDataCalc.GetRisePercent(nextStock);
 
             if (NumbericHelper.IsSameSign(deltapercent, nextPercent))
@@ -41,6 +40,11 @@ namespace FinanceAnalyzer.Business.Shape
             }
 
             return OperType.NoOper;
-        }        
+        }
+
+        public string GetName()
+        {
+            return "Triple";
+        }
     }    
 }

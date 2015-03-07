@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FinanceAnalyzer.Statistics.Vertex
 {
+    /// <summary> 
+    /// All vertexes
+    /// </summary>
     class Vertexes
     {
         public void Add(StockVertex sv)
@@ -27,7 +30,6 @@ namespace FinanceAnalyzer.Statistics.Vertex
             return vertexes_.Values;
         }
 
-        Dictionary<int, StockVertex> vertexes_ = new Dictionary<int, StockVertex>();
-        //List<StockVertex> vertexes_ = new List<StockVertex>();
+        Dictionary<int, StockVertex> vertexes_ = new Dictionary<int, StockVertex>(); // Key is DateID
     }
 }

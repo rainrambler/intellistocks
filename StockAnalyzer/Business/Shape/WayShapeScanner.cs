@@ -10,8 +10,17 @@ using FinanceAnalyzer.Utility.Stock;
 
 namespace FinanceAnalyzer.Business.Shape
 {
-    class ShapeScanner : IShapeScanner
+    class WayShapeScanner : IShapeScanner
     {
+        public WayShapeScanner()
+        {
+        }
+
+        public WayShapeScanner(double ratio)
+        {
+            riseRatio_ = ratio;
+        }
+
         public OperType Analyse(IStockData stock, IStockData prevStock)
         {
             if ((stock == null) || (prevStock == null))
@@ -35,17 +44,24 @@ namespace FinanceAnalyzer.Business.Shape
                 return OperType.NoOper;
             }
 
-            if ((deltapercent > 0.02) && (stock.EndPrice > prevStock.StartPrice))
+            if ((deltapercent > riseRatio_) && (stock.EndPrice > prevStock.StartPrice))
             {
                 return OperType.Buy;
             }
 
-            if ((deltapercent < -0.02) && (stock.EndPrice < prevStock.StartPrice))
+            if ((deltapercent < -riseRatio_) && (stock.EndPrice < prevStock.StartPrice))
             {
                 return OperType.Sell;
             }
 
             return OperType.NoOper;
         }
+
+        public string GetName()
+        {
+            return "WAY " + riseRatio_;
+        }
+
+        private double riseRatio_ = 0.02;
     }
 }

@@ -92,6 +92,16 @@ namespace FinanceAnalyzer.Business.Shape
                 && (deltaStartMin <= ratio / 4) && (deltaEndMin <= ratio / 4));
         }
 
+        public static bool IsGreen(IStockData data)
+        {
+            return data.EndPrice < data.StartPrice;
+        }
+
+        public static bool IsRed(IStockData data)
+        {
+            return data.EndPrice > data.StartPrice;
+        }
+
         IStockData StockData_;
         const double CROSSDELTAPERCENT = 0.01;
         const double CROSSSWINGPERCENT = 0.02;

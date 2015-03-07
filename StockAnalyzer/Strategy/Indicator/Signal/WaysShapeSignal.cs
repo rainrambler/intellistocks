@@ -32,7 +32,7 @@ namespace FinanceAnalyzer.Strategy.Indicator.Signal
 
         public string GetName()
         {
-            return "WaysShape";
+            return "Shape " + Scanner_.GetName();
         }
 
         #endregion

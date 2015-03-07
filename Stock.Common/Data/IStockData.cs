@@ -45,6 +45,11 @@ namespace Stock.Common.Data
             get;
         }
 
+        double AvgPrice
+        {
+            get;
+        }
+
         int VolumeHand
         {
             get;
